@@ -1,2 +1,2 @@
-# SamITOS - C lamg ver
+# SamITOS - C lang ver
 # SamITOS - NodeJS ver
