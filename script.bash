@@ -20,7 +20,7 @@ echo -e "${GREEN}Введите ваш персональный токен дл�
 read -s GITHUB_TOKEN
 
 # Изменяем URL для использования токена (токен будет передаваться в URL)
-git remote set-url origin https://$GITHUB_TOKEN@github.com/Mrprogrammer/SamITOS.git
+git remote set-url origin https://$GITHUB_TOKEN@github.com/Mrprogrammer201/SamITOS.git
 
 # Отправляем изменения в текущую ветку
 git push origin "$BRANCH"
