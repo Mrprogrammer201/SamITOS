@@ -9,4 +9,5 @@ SamITOS_SIM - SamITOS_SIM is an OS simulator written in C.
    ```bash
     git clone https://github.com/Mrprogrammer201/SamITOS.git
 2. Build the project using the script:
+   ```bash
     ./build.sh
