@@ -3,9 +3,9 @@
 #define COMMAND_HANDLER_H
 
 // Объявления функций
-void run_command(char *input, char *progname);
-void print_help(void);  // Объявление функции print_help
-void clear_screen(void);  // Объявление функции clear_screen
+void run_command(char *input);
+void print_help(void);
+void clear_screen(void);
 
 // Декларации остальных функций
 void ls(void);
@@ -18,6 +18,6 @@ void write_file(char *filename, char *content);
 void list_processes(void);
 void print_system_info(void);
 void echo(char *text);
+void compile_command(const char *args);
 
 #endif
-

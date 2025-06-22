@@ -1,0 +1,28 @@
+										    |==============================================|     
+    									            |SSSSS   AAAAA  M     M III  TTTTT  OOO  SSSSS |     
+    					                                            |S       A   A  MM   MM  I     T   O   O S     |     
+    										    | SSS    AAAAA  M M M M  I     T   O   O SSSSS |     
+    										    |    S   A   A  M  M  M  I     T   O   O     S |     
+                                                                                    |SSSSS   A   A  M     M III    T    OOO  SSSSS |     
+                                                                                    |==============================================|
+																     									  
+										  +--------------------------------------------------+
+										  |        SamITOS Operating System Simulator        |
+										  |--------------------------------------------------|
+										  | A simple CLI-based OS simulator written in C.    |
+										  |                                                  |
+										  | Included:                                        |
+										  |  - basic file system                             |
+										  |  - GCC                                           |
+										  |  - Python                                        |
+										  |  - nano editor                                   |
+										  |  - profile management                            |
+										  |  - process management (create, delete, list)     |
+										  |  - neofetch-like tool: nicopat                   |
+										  |                                                  |
+										  | Status: under development                        |
+										  | Version: 0.3                                     |
+										  |                                                  |
+										  | - Creator: Samvel Mirzoyants                     |
+										  |                                                  |  
+										  +--------------------------------------------------+
