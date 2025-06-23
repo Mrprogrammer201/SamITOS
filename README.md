@@ -4,6 +4,8 @@ SamITOS_SIM - SamITOS_SIM is an OS simulator written in C.
 - Works in CLI, without a graphical interface.
 - Simple shell with basic commands for interacting with the simulator.
 - This OS simulator depends on Linux.
+- Also, the simulator already has a prepared profile for the user. Name: UnixUser, Password: unix@2011.
+- After entering the simulator, the ls command will display the WELCOME.txt file, which contains a description of the project components.
 ## Installation and use:
 1. Copy the project to your PC:
    ```bash
