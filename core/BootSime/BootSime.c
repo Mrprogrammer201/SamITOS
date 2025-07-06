@@ -91,7 +91,9 @@ static void print_hardware_info() {
 // Display loading screen with progress bar
 static void display_loading_screen() {
     printf("\nSamITOS - OS Simulator\n");
-    printf("Version: 0.3 (Build 0425)\n");
+    printf("Version: 0.3\n");
+    printf("Release date: 22.25.06");
+    printf("Release time: 22:40")
     printf("(C) 2025 Mrprogrammer\n");
     printf("\n----------------------------\n");
     printf("Loading...\n\n[");
