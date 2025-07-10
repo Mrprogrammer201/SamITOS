@@ -10,7 +10,7 @@
 int user_mode = 0;
 char current_user[PROFILE_INPUT_MAX] = "guest";
 
-// Ensure data directory exists
+// Make sure the data directory exists
 void ensure_data_dir() {
     if (mkdir("data", 0777) == -1 && errno != EEXIST) {
         perror("Failed to create data directory");
@@ -18,12 +18,12 @@ void ensure_data_dir() {
     }
 }
 
-// Remove trailing newline from string
+// Remove trailing newline
 void trim_newline(char* str) {
     str[strcspn(str, "\n")] = 0;
 }
 
-// Hash password with SHA-256
+// Hash password using SHA-256
 void hash_password(const char* password, char* output_hex) {
     unsigned char hash[EVP_MAX_MD_SIZE];
     unsigned int len;
@@ -52,15 +52,15 @@ int verify_user(const char* username, const char* password) {
     if (!file) return 0;
 
     char line[256];
-    char user_fmt[128], pass_fmt[128];
+    char pattern[256];
     char hashed[65];
     hash_password(password, hashed);
 
-    sprintf(user_fmt, "username: %s", username);
-    sprintf(pass_fmt, "password: %s", hashed);
+    // Consistent line format
+    sprintf(pattern, "{ username: %s | password: %s};", username, hashed);
 
     while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, user_fmt) && strstr(line, pass_fmt)) {
+        if (strstr(line, pattern)) {
             fclose(file);
             return 1;
         }
@@ -70,7 +70,7 @@ int verify_user(const char* username, const char* password) {
     return 0;
 }
 
-// Create a profile
+// Create a new profile
 void profile_create() {
     ensure_data_dir();
 
@@ -102,12 +102,13 @@ void profile_create() {
     }
 
     hash_password(p.password, hashed);
+    // Write in consistent format
     fprintf(file, "{ username: %s | password: %s};\n", p.username, hashed);
     fclose(file);
     printf("Profile created.\n");
 }
 
-// List profiles
+// List all profiles
 void profile_list() {
     ensure_data_dir();
     FILE* file = fopen(DB_FILE, "r");
@@ -118,13 +119,14 @@ void profile_list() {
 
     char line[256];
     int count = 0;
+    char uname[PROFILE_INPUT_MAX], pass[65];
+
     while (fgets(line, sizeof(line), file)) {
-        char* start = strstr(line, "username: ");
-        if (start) {
-            start += 10;
-            char* end = strstr(start, " |");
-            if (end) *end = '\0';
-            printf(" [%d] - %s\n", count++, start);
+        // Parse line in expected format
+        if (sscanf(line, "{ username: %s | password: %s};", uname, pass) == 2) {
+            char *semi = strchr(uname, ';');
+            if (semi) *semi = '\0';
+            printf(" [%d] - %s\n", count++, uname);
         }
     }
 
@@ -132,7 +134,7 @@ void profile_list() {
     fclose(file);
 }
 
-// Delete profile
+// Delete a profile
 void profile_del() {
     ensure_data_dir();
 
@@ -190,7 +192,7 @@ void profile_del() {
     printf("Profile deleted.\n");
 }
 
-// Edit profile
+// Edit an existing profile
 void profile_edit() {
     ensure_data_dir();
 
@@ -246,11 +248,11 @@ void profile_edit() {
 
     char line[256];
     char pattern[256];
-    sprintf(pattern, "{ username: %s | password: %s };", username, old_hash);
+    sprintf(pattern, "{ username: %s | password: %s};", username, old_hash);
 
     while (fgets(line, sizeof(line), file)) {
         if (strstr(line, pattern)) {
-            fprintf(temp, "{ username: %s | password: %s };\n", new_username, new_hash);
+            fprintf(temp, "{ username: %s | password: %s};\n", new_username, new_hash);
         } else {
             fputs(line, temp);
         }
@@ -269,7 +271,7 @@ void profile_edit() {
     printf("Profile updated.\n");
 }
 
-// Login user
+// User login
 void user_login() {
     ensure_data_dir();
 
@@ -301,7 +303,7 @@ void user_login() {
     }
 }
 
-// Logout user
+// User logout
 void logout() {
     char password[PROFILE_INPUT_MAX], confirm[PROFILE_INPUT_MAX];
 
@@ -323,7 +325,7 @@ void logout() {
     printf("Logged out.\n");
 }
 
-// Show user prompt
+// Show the user prompt
 void user_mode_prompt() {
     if (user_mode)
         printf("SamITOS#%s$> ", current_user);
