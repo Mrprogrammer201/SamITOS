@@ -93,7 +93,7 @@ static void display_loading_screen() {
     printf("\nSamITOS - OS Simulator\n");
     printf("Version: 0.3\n");
     printf("Release date: 22.25.06\n");
-    printf("Release time: 22:40\n")
+    printf("Release time: 22:40\n");
     printf("(C) 2025 Mrprogrammer\n");
     printf("\n----------------------------\n");
     printf("Loading...\n\n[");
