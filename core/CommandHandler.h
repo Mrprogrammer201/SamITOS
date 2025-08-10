@@ -1,13 +1,13 @@
-// CommandHandler.h
+//CommandHandler.h
 #ifndef COMMAND_HANDLER_H
 #define COMMAND_HANDLER_H
 
-// Объявления функций
+// Function declarations
 void run_command(char *input);
 void print_help(void);
 void clear_screen(void);
 
-// Декларации остальных функций
+// Declarations of other functions
 void ls(void);
 void cr_fl(char *filename);
 void dl_fl(char *filename);
