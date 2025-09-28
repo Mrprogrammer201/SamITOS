@@ -2,6 +2,7 @@
 #include "Utils/Nicopat.h"
 #include "FS/FileSystem.h"
 #include "PM/PM.h"
+#include "Profiles/Profiles.c"
 #include "BootSime/BootSime.h"
 #include "main.h"
 #include <stdio.h>
