@@ -24,3 +24,7 @@ SamITOS_SIM - SamITOS_SIM is an OS simulator written in C.
     ```bash
     ./scripts/build.sh
     ```
+5. Project launch:
+   ```bash
+   ./bin/SamITOS_SIM
+   ```
