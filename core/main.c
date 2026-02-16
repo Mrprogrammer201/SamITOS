@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     bootsime_main();
 
     // Welcome message
-    printf(">>> SamITOS - OS Simulator [v0.2.2] <<<\n");
+    printf(">>> SamITOS - OS Simulator [v0.3] <<<\n");
     printf("Type 'help' for available commands.\n");
 
     char input[SAMITOS_MAX_INPUT];
